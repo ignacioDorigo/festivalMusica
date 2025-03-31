@@ -1,0 +1,66 @@
+@use "../base/variables" as v;
+@use "../base/mixins" as m;
+@use "sass:color";
+.video {
+  position: relative;
+  min-height: 50rem;
+  max-height: 70rem;
+  overflow: hidden;
+  .overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+      270deg,
+      rgba(v.$morado, 0.2),
+      rgba(color.adjust(v.$morado, $lightness: -30%), 90%)
+    );
+
+    display: flex;
+    align-items: center;
+  }
+
+  video {
+    display: block;
+    width: auto;
+    max-height: 100%;
+    @include m.desktop {
+      width: 100%;
+    }
+  }
+}
+
+.contenedor-video {
+  z-index: 3;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  @include m.tablet {
+    align-items: start;
+  }
+
+  h2 {
+    color: v.$blanco;
+    font-size: 5rem;
+    text-align: center;
+    margin: 0;
+
+    @include m.tablet {
+      font-size: 7rem;
+      text-align: start;
+    }
+  }
+
+  p {
+    background-color: v.$rosa;
+    display: inline-block;
+    color: v.$blanco;
+    padding: 1rem 2rem;
+    font-weight: bold;
+    font-size: 2.4rem;
+    width: max-content;
+
+    @include m.tablet {
+    }
+  }
+}
