@@ -425,7 +425,8 @@ body > section {
   color: #ffffff;
   font-size: 2.4rem;
 }
-.navegacion-principal a:hover {
+.navegacion-principal a:hover,
+.navegacion-principal .active {
   color: #fdda00;
 }
 .navegacion-principal {
