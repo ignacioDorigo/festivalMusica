@@ -1,6 +1,8 @@
 document.addEventListener("DOMContentLoaded", function () {
   navegacionFija();
   crearGaleria();
+  precioPase();
+  resaltarEnlace();
 });
 
 function navegacionFija() {
@@ -74,9 +76,31 @@ function resaltarEnlace() {
   document.addEventListener("scroll", function () {
     const sections = document.querySelectorAll("section");
     const navLinks = document.querySelectorAll(".navegacion-principal a");
-
+    let actual = "";
     sections.forEach((section) => {
-      const sectionTop = section.offsetTop();
+      const sectionTop = section.offsetTop;
+      const sectionHeight = section.clientHeight;
+
+      if (window.scrollY >= sectionTop - sectionHeight / 3) {
+        actual = section.id;
+      }
+    });
+    navLinks.forEach((link) => {
+      if (link.getAttribute("href") === "#" + actual) {
+        link.classList.add("active");
+      } else{
+        link.classList.remove("active");
+      }
+    });
+    console.log("");
+  });
+}
+
+function precioPase() {
+  const preciosPase = document.querySelectorAll(".pase__precio");
+  preciosPase.forEach((precio) => {
+    precio.addEventListener("click", (precio) => {
+      alert(`Genial, compraste un pase de ${precio.target.textContent}`);
     });
   });
 }
